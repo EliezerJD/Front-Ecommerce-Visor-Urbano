@@ -1,0 +1,197 @@
+
+<div class="header-area">
+    <div class="container">
+        <div class="row upper-nav">
+
+            <div class="col-3 nav-icon pt-3">
+                <ul class="social-icons-simple text-left">
+                    <li><a href="https://www.facebook.com/bellotaestudio1" target="_blank" class="facebook-bg-hvr"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/bellotaestudio/" target="_blank" class="instagram-bg-hvr"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-6 text-center nav-logo pt-3">
+                <a href="/home" class="navbar-brand"><img src="assets/img/logo1.png" alt="img"></a>
+            </div>
+
+            <div class="col-3 nav-utility text-right d-flex justify-content-end align-items-center pt-3">
+                <div class="manage-icons d-inline-block">
+                        <ul> 
+                            <li class="d-inline-block mini-menu-card" id="mini-menu-card">
+                                <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages4">
+                                    
+                                    <i class="fas fa-shopping-cart"><span class="badge badge-light" style="font-size: 15px; color: deeppink;">0</span></i>
+                                </a>
+                                <div id="sideNavPages4" class="collapse sideNavPages shopping-cart">
+                                    <i class="fas fa-caret-up mini-cart-caret"></i>
+                                    <div class="mini-cart-header text-left">
+                                        <h4>Carrito de compras</h4>
+                                    </div>
+                                    <div class="mini-cart-body">
+                                        <div class="inner-card2">
+                                            <div class="subtotal text-center">
+                                                <span class="total-title">El carrito está vacío</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mini-cart-footer">
+                                        <br>
+                                        <div class="actions text-center">
+                                            <a href="/catalogo" class="btn pink-gradient-btn-into-black">Ver catálogo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-template #listCart>
+                                    <div id="sideNavPages4" class="collapse sideNavPages shopping-cart">
+                                        <i class="fas fa-caret-up mini-cart-caret"></i>
+                                        <div class="mini-cart-header text-left">
+                                            <h4>Carrito de compras</h4>
+                                        </div>
+                                        <div class="mini-cart-body">
+                                            <div class="inner-card">
+                                                <div class="media" *ngFor="let car of carrito; let i = index">
+                                                    <div class="img-holder ml-1 mr-2">
+                                                        <a><img [src]="car.image1" class="align-self-center" alt="cartitem"></a>
+                                                    </div>
+                                                    <div class="media-body mt-auto mb-auto">
+                                                        <h5 class="name"><a (click)="detalle(car)">{{car.nombre}}</a></h5>
+                                                        <p class="category">{{car.categoria}}</p>
+                                                        <p class="price"><span>${{car.precio * car.cantidad}}</span>(x{{car.cantidad}}) <a (click)="deleteFromCart(i)"> <i class="fa fa-trash dustbin"></i></a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mini-cart-footer">
+                                            <div class="subtotal text-center">
+                                                <span class="total-title">Total: $ {{total}}</span>
+                                                
+                                            </div>
+                                            <div class="actions text-center">
+                                                <a href="/carrito" class="btn pink-gradient-btn-into-transparent">Ver carrito</a>
+                                            <a href="/carrito" class="btn pink-gradient-btn-into-transparent">Pagar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                               
+                                </ng-template>
+                            </li>
+                            <li class="d-inline-block simple-dropdown" id="mini-menu">
+                                <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages5">
+                                    <i class="fas fa-user"></i>
+                                </a>
+
+                                <div id="sideNavPages5" class="collapse sideNavPages user-utiliity">
+                                    <i class="fas fa-caret-up user-utiliity-caret"></i>
+                                    <h6 class="user-utiliity-title">Panel de usuario</h6>
+                                    <h6 class="user-utiliity-title">Administrador</h6>
+                                    <hr>
+                                    <ul class="text-left">
+                                        <div >
+                                            <li ><a href="/usuario">Mi cuenta</a></li> 
+                                            <li ><a href="/admin">Administrar</a></li> 
+                                            <li><a (click)="logout()" >Salir</a></li> 
+                                        </div>
+                                        <ng-template #nologueado>
+                                            <li>
+                                                <a href="/login">Iniciar sesión</a>
+                                            </li>
+                                            <li>
+                                                <a href="/registro">Registrarse</a>
+                                            </li>
+                                        </ng-template>
+                                    </ul>
+                                </div>
+
+                            </li>
+                        </ul>
+                 </div>
+            </div>
+
+            <div class="col-12 nav-mega">
+                <header class="site-header" id="header">
+                    <nav class="navbar navbar-expand-md  static-nav">
+                        <div class="container position-relative megamenu-custom">
+                            <a class="navbar-brand center-brand" href="/home">
+                                <img src="/assets/img/logo1.png" alt="logo" class="logo-scrolled">
+                            </a>
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav ml-auto mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/home">Inicio</a>
+                                    </li>
+                                    <li class="nav-item dropdown static">
+                                        <a class="nav-link" href="/catalogo"> Catálogo </a>
+                                    </li>
+                                    <li class="nav-item dropdown position-relative">
+                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda</a>
+                                        <div class="dropdown-menu">
+                                            <ul>
+                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="/terminos-y-condiciones">Términos y condiciones</a></li>
+                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="/politicas">Políticas de privacidad</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/contacto">Contacto</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!--side menu open button-->
+                        <a href="javascript:void(0)" class="d-inline-block sidemenu_btn d-lg-none d-md-block" id="sidemenu_toggle">
+                            <span></span> <span></span> <span></span>
+                        </a>
+                    </nav>
+
+
+                    <!-- side menu -->
+                    <div class="side-menu opacity-0 gradient-bg hidden">
+                        <div class="inner-wrapper">
+                            <span class="btn-close btn-close-no-padding" id="btn_sideNavClose"><i></i><i></i></span>
+                            <nav class="side-nav w-100">
+                                <ul class="navbar-nav">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/inicio"> Inicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/catalogo">
+                                            Catalogo
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
+                                            Ayuda <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                        <div id="sideNavPages2" class="collapse sideNavPages">
+
+                                            <ul class="navbar-nav mt-2">
+                                                <li class="nav-item"><a class="nav-link" href="/politicas">Politicas de privacidad</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="/terminos-y-condiciones">Terminos y condiciones </a></li>
+                                                <li class="nav-item" ><a class="nav-link" href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                                            </ul>
+                                            
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/contacto">Contacto</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="side-footer w-100">
+                                <ul class="social-icons-simple white top40">
+                                    <li><a class="facebook-bg-hvr"  href="https://www.facebook.com/bellotaestudio1" target="_blank"><i class="fab fa-facebook-f"></i> </a> </li>
+                                    <li><a class="instagram-bg-hvr" href="https://www.instagram.com/bellotaestudio/" target="_blank"><i class="fab fa-instagram"></i> </a> </li>
+                                </ul>
+                                <p class="whitecolor">&copy; <span id="year"></span> Bellota Estudio. Made by: Binary Software</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="close_side_menu" class="tooltip"></div>
+                    <!-- End side menu -->
+                </header>
+            </div>
+        </div>
+    </div>
+</div>

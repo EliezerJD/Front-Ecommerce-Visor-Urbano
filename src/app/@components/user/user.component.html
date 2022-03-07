@@ -1,0 +1,101 @@
+<div class="loader1">
+    <div class="loader-inner">
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+<div id="contenedorAdmin">
+    <div  style="background-color: white; text-align: center;">
+        <div style="border-top: 4px double black; border-bottom: 4px double black;" >
+            <br>
+            <h2>Panel de usuario</h2>
+            <br>
+        </div>
+    </div>
+    
+                    
+    <div  id="botonesAdmin" style="text-align: center; padding:50px; border-bottom: 4px double black;">
+        <button type="button" class="btn black-btn-with-border" id="verPedidos"  style="width:200px; margin: 10px;" >Mis pedidos</button>
+        <button type="button" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 10px;" >Mis datos de envío</button>
+    </div>
+    <div >
+        <br>
+        <h3 style="text-align: center;">No tienes pedidos aún</h3>
+        
+    </div>
+            <div >
+             <div  class="container">
+            <div class="row pt-5 justify-content-center align-items-center" >
+            <div class="col-12 cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                <div class="table-responsive">
+                    <table class="table table-bordered border-radius" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th style="width: 200px;" class="darkcolor">ID Pedido</th>
+                                <th style="width: 250px;">Fecha de compra</th>
+                                <th style="width: 250px;">Detalle</th>
+                                <th style="width: 250px;">Total</th>
+                                <th style="width: 250px;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr >
+                            <td></td>
+                            <td></td>
+                            <td><button class="btn btn-info btn-block"  >Ver Pedido</button></td>
+                            <td>$</td>
+                            <td >Preparando paquete</td>
+                            <td>Enviado</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>  
+        </div>
+              
+          </div>     
+       
+        
+
+        <div>
+            <div class="container">
+                <div class="row pt-5 justify-content-center align-items-center">
+                    <div class="cardUsuario">
+                        <div >
+                            <h3 style="margin-bottom: 10px;">Dirección actual</h3>
+                        <p style="margin: 0px;"></p>
+                        <p style="margin: 0px;"></p>
+                        <p style="margin: 0px;"></p>
+                        <p style="margin: 0px;"></p>
+                        <p style="margin: 0px;"></p>
+                        <div >
+                            <p style="margin: 0px;"></p>
+                            <p style="margin: 0px;"></p>
+                        </div>
+                        <ng-template #once>
+                            <div >
+                                <p style="margin: 0px;"></p>
+                                <p style="margin: 0px;"></p>
+                            </div>
+                        </ng-template>
+                        <br><br>
+                        <a class="btn pink-gradient-btn-into-black">Cambiar dirección</a>
+                        <br>
+                        </div>
+                        <ng-template #no>
+                             <h3 style="margin-bottom: 10px;">No has agregado una dirección</h3>
+                             <br>
+                             <br>
+
+                             <a class="btn pink-gradient-btn-into-black">Agregar dirección</a>
+                             <br>
+                        </ng-template>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+</div>

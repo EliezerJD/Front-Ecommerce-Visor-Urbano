@@ -1,0 +1,146 @@
+<div class="loader1">
+    <div class="loader-inner">
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+    </div>
+</div>
+<div id="contenedorAdmin">
+        <div  style="background-color: white; text-align: center;">
+            <div style="border-top: 4px double black; border-bottom: 4px double black;" >
+                <br>
+                <h2>Bienvenido(a) al panel de administración</h2>
+                <br>
+            </div>
+        </div>
+        <div  id="botonesAdmin" style="text-align: center; padding:50px; border-bottom: 4px double black;">
+            <button type="button" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 10px;">Agregar producto</button>
+            <button type="button" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 10px;">Ver productos</button>
+
+            <button type="button" class="btn black-btn-with-border" id="verPedidos" style="width:200px; margin: 10px;">Ver pedidos</button>
+        </div>
+</div>        
+        <div>
+          <div>
+            <div style="text-align: center;">
+              <br>
+              <h3>No tienes productos agregados</h3>
+              <br>
+             <img src="assets/img/admin-productos.jpg">
+            </div>  
+          </div>  
+        </div>         
+
+<ng-template #other>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;" style="margin-top: -60px;">
+          <div class="table-responsive">
+            <br>
+            <table class="table table-bordered border-radius" style="text-align: center;">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                  <th>Descuento</th>
+                  <th>Stock</th>
+                  <th style="width: 150px">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="rem1">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td >{{producto.descuento}}%</td>
+                  <td>Sin descuento</td>
+                  <td></td>
+                  <td>
+                    <button style="margin-bottom: 2px" class="btn btn-info btn-block">Ver</button>
+                    <button style="margin-bottom: 2px" class="btn btn-warning btn-block">Editar</button>
+                    <button style="margin-bottom: 2px" class="btn btn-danger btn-block">Borrar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #view1>
+  <div class="container">
+    <div class="row pt-5 justify-content-center align-items-center" >
+      <div class="col-3 form-group" style="margin-top: -15px;">
+        Filtrar pedidos por:
+      </div>
+      <div class="col-3 form-group">
+          <select class="custom-select">
+            <option selected value="0">Pendientes de envío</option>
+            <option value="1">Enviados</option>
+            <option value="2">Cancelados</option>
+            <option value="3">Todos</option>
+          </select>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row pt-5 justify-content-center align-items-center" >
+
+      <div class="col text-center" style="margin-top: -30px;" >
+        <h3>No hay pedidos que mostrar</h3>
+        <br>
+        <br>
+      </div>
+      <ng-template #tabla>
+        <div class="col-12 cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;" style="margin-top: -60px;">
+          <div class="table-responsive">
+            <table class="table table-bordered border-radius" style="text-align: center;">
+              <thead>
+                <tr>
+                  <th >ID Pedido</th>
+                  <th >Información de envío</th>
+                  <th >Fecha de compra</th>
+                  <th>Pedido</th>
+                  <th >Forma de pago</th>
+                  <th >Total</th>
+                  <th >Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="rem1">
+                  <td></td>
+                  <td>
+                    <button class="btn btn-info btn-block">Ver</button>
+                  </td>
+                  <td></td>
+                  <td>
+                    <button class="btn btn-info btn-block">Ver</button>
+                  </td>
+                  <td ></td>
+                  <td></td>
+                  <td >
+                    <button style="margin-bottom: 5px" class="btn btn-success btn-block">Despachar</button>
+                    <button class="btn btn-success btn-danger">Cancelar</button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-success" disabled>Despachado</button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-danger" disabled>Cancelado</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
