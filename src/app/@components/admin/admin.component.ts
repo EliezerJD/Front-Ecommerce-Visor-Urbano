@@ -9,11 +9,20 @@ import { DeliveryService } from  'src/app/@services/delivery/delivery.service';
 })
 
 export class AdminComponent implements OnInit {
-  
+  products:any=[];
   constructor(private adminService: AdminService, private deliveryService: DeliveryService) { }
   
   ngOnInit(): void { 
-    
+    this.getAllProducts();
+  }
+
+  getAllProducts(){
+    this.deliveryService.getAllProducts().subscribe(res => {
+      this.products = res;
+    },
+    error=> {
+      alert(error.message);
+    });
   }
 
 

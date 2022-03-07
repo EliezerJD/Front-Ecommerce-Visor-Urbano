@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from  'src/app/@services/auth/auth.service';
-import { Router } from  "@angular/router";
 
 declare function validationLogin(): any;
 declare function resetPassword(): any;
@@ -11,9 +10,28 @@ declare function resetPassword(): any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private authService : AuthService) { }
+
   ngOnInit(): void {
     
+  }
+
+  login(){
+    this.authService.login(this.email, this.password).subscribe(res => {
+      if(res!=null){
+        sessionStorage.setItem('user', JSON.stringify(res));
+        window.location.replace('/home');
+      }else{
+        alert("Credenciales incorrectas");
+      }
+      
+    },
+    error=> {
+      console.log(error);
+    });
   }
 
   

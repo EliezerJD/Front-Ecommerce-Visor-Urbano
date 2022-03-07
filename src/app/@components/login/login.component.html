@@ -23,13 +23,13 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group bottom35">
                                 <label for="registerEmail" class="d-none"></label>
-                                <input class="form-control" type="email" placeholder="Email:" id="email">
+                                <input class="form-control" type="email" [(ngModel)]="email" placeholder="Email:" name="email">
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group bottom35">
                                 <label for="registerPass" class="d-none"></label>
-                                <input class="form-control" type="password" placeholder="Contraseña:" id="password">
+                                <input class="form-control" type="password" [(ngModel)]="password" placeholder="Contraseña:" name="password">
                                 <a style="font-size: 13px; color: blue; cursor: pointer;">¿Olvidaste tu contraseña?</a>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <button type="button" class="btn pink-gradient-btn-into-black">Iniciar sesión</button>
+                            <button type="button" class="btn pink-gradient-btn-into-black" (click)="login()">Iniciar sesión</button>
                             <p class="top20 SignInclass"> ¿No tienes una cuenta? &nbsp;<a href="/registro">Registrate</a> </p>
                         </div>
                         

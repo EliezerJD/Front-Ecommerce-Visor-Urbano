@@ -420,65 +420,37 @@
           <div class="container">
                <div class="row" >
                     <div class="col text-center">
-                         <h3 >No hay productos en esta categoría</h3>
+                         <h3 *ngIf="products.length<1 else cards">No hay productos en esta categoría</h3>
                     </div>
                     
-                    <ng-template #mostrar>
-                         <div class="col-md-4" *ngFor="let producto of productos.slice(0,6)">
-                              <div class="card mb-4 text-center cbp-item2 wow slideInUp"  style="border-style: hidden;">
+                    <ng-template #cards>
+                         <div class="col" *ngFor="let product of products.slice(0,3)">
+                              <div class="card mb-2 text-center cbp-item2 wow slideInUp"  style="border-style: hidden;">
                                    <div>
-                                        <a *ngIf="producto.stock>=1" class="portfolio-circle-cart" (click)="addCart(producto)" style="cursor: pointer;">
+                                        <a *ngIf="product.amount>=1" class="portfolio-circle-cart" style="cursor: pointer;">
                                              <i class="fa fa-shopping-cart"></i>
                                         </a>
                                         
-                                        <div id="carouselExampleControls{{producto.id}}" class="carousel slide" data-ride="carousel">
+                                        <div id="carouselExampleControls{{product.id}}" class="carousel slide" data-ride="carousel">
 
                                              <div class="carousel-inner">
-                                                  <h2 *ngIf="producto.stock<1" class="agotadotxthome">Agotado</h2>
-                                                  <div [ngClass]="{'agotado': producto.stock < 1}">
+                                                  
+                                                  <div [ngClass]="{'agotado': product.amount < 1}">
                                                        <div class="carousel-item active">
-                                                            <a href="{{producto.image1}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                            <img class="imgNew" src="{{producto.image1}}" alt="Error"></a>
-                                                       </div>
-                                                       <div *ngIf="producto.image2!==null" class="carousel-item">
-                                                            <a href="{{producto.image2}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                            <img class="imgNew" src="{{producto.image2}}" alt="Error"></a>
-                                                       </div>
-                                                       <div *ngIf="producto.image3!==null" class="carousel-item">
-                                                            <a href="{{producto.image3}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                            <img class="imgNew" src="{{producto.image3}}" alt="Error"></a>
-                                                       </div>
-                                                       <div *ngIf="producto.image4!==null" class="carousel-item">
-                                                            <a href="{{producto.image4}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                            <img class="imgNew" src="{{producto.image4}}" alt="Error"></a>
-                                                       </div>
-                                                       <div *ngIf="producto.image5!==null" class="carousel-item">
-                                                            <a href="{{producto.image5}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                            <img class="imgNew" src="{{producto.image5}}" alt="Error"></a>
+                                                            <a href="assets/img/bg-placeholder.svg" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
+                                                            <img class="imgNew" src="../assets/img/bg-placeholder.svg" alt="Error"></a>
                                                        </div>
                                                   </div>
                               
-                                             </div>
-                                             <div *ngIf="producto.image2!==null || producto.image3!==null">
-                                                  <a class="carousel-control-prev" href="#carouselExampleControls{{producto.id}}" role="button" data-slide="prev">
-                                                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                       <span class="sr-only">Anterior</span>
-                                                  </a>
-                                                  <a class="carousel-control-next" href="#carouselExampleControls{{producto.id}}" role="button" data-slide="next">
-                                                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                       <span class="sr-only">Siguiente</span>
-                                                  </a>
                                              </div>
                                              
                                         </div>
                                    </div>
                                    <div class="card-body border-card">
-                                        <a (click)="detalle(producto)" class="card-title">{{producto.nombre}}</a>
-                                        <div *ngIf="producto.descuento>0"> 
-                                             <div class="card-text">${{producto.precio-((producto.precio*producto.descuento)/100)}}&nbsp;<del style="color: gray">${{producto.precio}}</del></div>
-                                        </div>
-                                        <div *ngIf="producto.descuento==0 || producto.descuento==null"> 
-                                             <div class="card-text">${{producto.precio}}</div>
+                                        <a (click)="detalle(producto)" class="card-title">{{product.name}}</a>
+                                        
+                                        <div > 
+                                             <div class="card-text">${{product.price}}</div>
                                         </div>
                                    </div>
                               </div>
@@ -515,76 +487,6 @@
 <!--END BANNER SECTION-->
 
 <!--START LATEST ARRIVALS-->
-<div class="lastest_arrivals">
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12 mb-4">
-                <h1 style="text-align: center;">Joyas recientes agregadas</h1>
-            </div>
 
-               <!--<div *ngFor="let productoReciente of productosRecientes" class="col-4">
-                    <div class="lastest_arrival_items item" >
-                        <a *ngIf="productoReciente.stock>=1" (click)="addCart(productoReciente)" style="cursor: pointer;" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                        <div class="card">
-                              <div class="image-holder">
-                                   <div id="carouselExample{{productoReciente.id}}" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                             <h2 *ngIf="productoReciente.stock<1" class="agotadotxtrecent">Agotado</h2>
-                                             <div [ngClass]="{'agotado': productoReciente.stock < 1}">
-                                                  <div class="carousel-item active">
-                                                       <a href="{{productoReciente.image1}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                       <img class="imgRec" src="{{productoReciente.image1}}" alt="Error"></a>
-                                                  </div>
-                                                  <div *ngIf="productoReciente.image2!==null" class="carousel-item">
-                                                       <a href="{{productoReciente.image2}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                       <img class="imgRec" src="{{productoReciente.image2}}" alt="Error"></a>
-                                                  </div>
-                                                  <div *ngIf="productoReciente.image3!==null" class="carousel-item">
-                                                       <a href="{{productoReciente.image3}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                       <img class="imgRec" src="{{productoReciente.image3}}" alt="Error"></a>
-                                                  </div>
-                                                  <div *ngIf="productoReciente.image4!==null" class="carousel-item">
-                                                       <a href="{{productoReciente.image4}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                       <img class="imgRec" src="{{productoReciente.image4}}" alt="Error"></a>
-                                                  </div>
-                                                  <div *ngIf="productoReciente.image5!==null" class="carousel-item">
-                                                       <a href="{{productoReciente.image5}}" class="cbp-caption" data-fancybox="gallery2"  data-title="Shirt Name">
-                                                       <img class="imgRec" src="{{productoReciente.image5}}" alt="Error"></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div *ngIf="productoReciente.image2!==null || productoReciente.image3!==null">
-                                             <a class="carousel-control-prev" href="#carouselExample{{productoReciente.id}}" role="button" data-slide="prev">
-                                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                  <span class="sr-only">Anterior</span>
-                                             </a>
-                                             <a class="carousel-control-next" href="#carouselExample{{productoReciente.id}}" role="button" data-slide="next">
-                                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                  <span class="sr-only">Siguiente</span>
-                                             </a>
-                                        </div>     
-                                   </div>
-                              </div>
-                              <div class="card-body">
-                                   <div class="row">
-                                        <div class="col-12 text-center" style="margin-top: -12px;">
-                                             <h5 (click)="detalle(productoReciente)" style="cursor: pointer;" class="card-title">{{productoReciente.nombre}}</h5>
-                                        </div>
-                                        <div class="col-12 text-center" style="margin-top: -16px;">
-                                             <div *ngIf="productoReciente.descuento>0"> 
-                                                  <p class="card-text">${{productoReciente.precio-((productoReciente.precio*productoReciente.descuento)/100)}}&nbsp;<del style="color: gray">${{productoReciente.precio}}</del></p>
-                                             </div>
-                                             <div *ngIf="productoReciente.descuento==0 || productoReciente.descuento==null"> 
-                                                  <p class="card-text">${{productoReciente.precio}}</p>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-               </div>-->
-          </div>
-     </div>
-</div>
 
 <!--END LATEST ARRIVALS-->

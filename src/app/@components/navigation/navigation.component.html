@@ -81,14 +81,14 @@
 
                                 <div id="sideNavPages5" class="collapse sideNavPages user-utiliity">
                                     <i class="fas fa-caret-up user-utiliity-caret"></i>
-                                    <h6 class="user-utiliity-title">Panel de usuario</h6>
-                                    <h6 class="user-utiliity-title">Administrador</h6>
+                                    <h6 *ngIf="admin==false" class="user-utiliity-title">Panel de usuario</h6>
+                                    <h6 *ngIf="admin==true"class="user-utiliity-title">Administrador</h6>
                                     <hr>
                                     <ul class="text-left">
-                                        <div >
-                                            <li ><a href="/usuario">Mi cuenta</a></li> 
-                                            <li ><a href="/admin">Administrar</a></li> 
-                                            <li><a (click)="logout()" >Salir</a></li> 
+                                        <div *ngIf="isAuth()==true else nologueado">
+                                            <li *ngIf="admin==false"><a href="/usuario">Mi cuenta</a></li> 
+                                            <li *ngIf="admin==true"><a href="/admin">Administrar</a></li> 
+                                            <li><a (click)="logout()">Salir</a></li> 
                                         </div>
                                         <ng-template #nologueado>
                                             <li>
