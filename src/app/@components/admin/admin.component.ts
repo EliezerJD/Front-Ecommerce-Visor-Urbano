@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone} from '@angular/core';
-import { AdminService } from  'src/app/@services/admin/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +7,7 @@ import { AdminService } from  'src/app/@services/admin/admin.service';
 })
 
 export class AdminComponent implements OnInit {
-  constructor(private adminService: AdminService) { }
+  constructor() { }
   
   ngOnInit(): void { 
   }

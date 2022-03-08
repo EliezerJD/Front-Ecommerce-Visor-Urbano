@@ -6,16 +6,14 @@ const urlApi = 'http://localhost:8000';
 @Injectable({
   providedIn: 'root'
 })
-export class DeliveryService {
+export class ProductService {
   httpOptions;
   constructor(private http: HttpClient) { }
 
+
+  //Productos
   getAllProducts(){
     return this.http.get(urlApi + '/api/productos');
-  }
-
-  getAllUsers(){
-    return this.http.get(urlApi + '/api/usuarios', this.httpOptions);
   }
 
   addProduct(data:any){
@@ -29,6 +27,9 @@ export class DeliveryService {
   deleteProduct(id:number){
     return this.http.delete(urlApi + '/api/productos/delete/'+id, this.httpOptions);
   }
+
+
+  
 
   init(token:string){
     this.httpOptions = {

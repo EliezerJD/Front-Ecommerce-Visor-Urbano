@@ -1,46 +1,100 @@
-<div *ngIf="users.length<1 else other">
-  <div>
-    <div style="text-align: center;">
-      <br>
-      <h3>No tienes productos agregados</h3>
-      <br>
-      <img src="assets/img/admin-productos.jpg">
+<div *ngIf="view==0">
+  <div  id="botonesAdmin" style="text-align: center; padding:10px;">
+    <button type="button" (click) ="changeView(1)" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 10px; text-align: center;">Agregar Usuario</button>
+  </div>
+  <div *ngIf="users.length<1 else other">
+    <div>
+      <div style="text-align: center;">
+        <br>
+        <h3>No tienes productos agregados</h3>
+        <br>
+        <img src="assets/img/admin-productos.jpg">
+      </div>  
     </div>  
-  </div>  
-</div>         
-<ng-template #other>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;" style="margin-top: -60px;">
-          <div class="table-responsive">
-            <br>
-            <table class="table table-bordered border-radius" style="text-align: center;">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th style="width: 150px">Acción</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="rem1" *ngFor="let user of users">
-                  <td>{{user.name}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.role_id}}</td>
-                  <td>
-                    <button style="margin-bottom: 2px" class="btn btn-warning btn-block">Editar</button>
-                    <button style="margin-bottom: 2px" class="btn btn-danger btn-block">Borrar</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <br>
+  </div>         
+  <ng-template #other>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;" style="margin-top: -60px;">
+            <div class="table-responsive">
+              <br>
+              <table class="table table-bordered border-radius" style="text-align: center;">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th style="width: 150px">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rem1" *ngFor="let user of users; let i = index">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.role_id}}</td>
+                    <td>
+                      <button style="margin-bottom: 2px" (click)="updateAux(user.id, i)" class="btn btn-warning btn-block">Editar</button>
+                      <button style="margin-bottom: 2px" (click)="delete(user.id, i)" class="btn btn-danger btn-block">Borrar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </ng-template>
+</div>
+<div *ngIf="view==1 || view==2">
+  <div  id="botonesAdmin" style="text-align: center; padding:10px;">
+    <button type="button" (click) ="changeView(0)" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 10px; text-align: center;">Ver Usuarios</button>
   </div>
-</ng-template>
+    <hr>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group bottom35">
+            <label for="registerName" class="d-none"></label>
+            <input  class="form-control" [(ngModel)]="userAdd.name" type="text" placeholder="Nombre del usuario:" id="nombre">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group bottom35">
+            <label for="registerName" class="d-none"></label>
+            <input class="form-control" [(ngModel)]="userAdd.email" type="text" placeholder="Email:" id="description">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group bottom35">
+            <label for="registerName" class="d-none"></label>
+            <input class="form-control" [(ngModel)]="userAdd.password" type="text" placeholder="Contraseña:" id="price">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group bottom35">
+            <label for="registerName" class="d-none"></label>
+            <input class="form-control" [(ngModel)]="userAdd.confirm_password" type="text" placeholder="Confirmar contraseña:" id="price">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group bottom35">
+            <label for="registerName" class="d-none"></label>
+            <input  class="form-control" [(ngModel)]="userAdd.role_id" type="number" placeholder="Rol:" id="nombre">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div  id="botonesAdmin" style="text-align: center; padding:10px;">
+            <button *ngIf="view==1" type="button" (click) ="add()" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 5px; text-align: center;">Agregar</button>
+            <button *ngIf="view==2" type="button" (click) ="update()" class="btn black-btn-with-border" id="agregarProductos" style="width:200px; margin: 5px; text-align: center;">Actualizar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 

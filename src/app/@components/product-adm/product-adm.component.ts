@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryService } from  'src/app/@services/delivery/delivery.service';
+import { ProductService } from  'src/app/@services/product/product.service';
 
 @Component({
   selector: 'app-product-adm',
@@ -11,16 +11,16 @@ export class ProductAdmComponent implements OnInit {
   productAdd:any=[];
   view=0;
   index=0;
-  constructor(private deliveryService: DeliveryService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     var user = JSON.parse(sessionStorage.getItem('user'));
-    this.deliveryService.init(user.apiToken);
+    this.productService.init(user.apiToken);
     this.getAllProducts();
   }
 
   getAllProducts(){
-    this.deliveryService.getAllProducts().subscribe(res => {
+    this.productService.getAllProducts().subscribe(res => {
       this.products = res;
     },
     error=> {
@@ -29,7 +29,9 @@ export class ProductAdmComponent implements OnInit {
   }
 
   add(){
-    this.deliveryService.addProduct(this.productAdd).subscribe(res => {
+    this.productService.addProduct(this.productAdd).subscribe(res => {
+      this.getAllProducts();
+      this.view=0;
       alert("Producto agregado correctamente");
     },
     error=> {
@@ -38,7 +40,7 @@ export class ProductAdmComponent implements OnInit {
   }
 
   update(){
-    this.deliveryService.updateProduct(this.productAdd, this.index).subscribe(res => {
+    this.productService.updateProduct(this.productAdd, this.index).subscribe(res => {
       this.getAllProducts();
       this.view=0;
       alert("Producto actualizado correctamente");
@@ -58,7 +60,7 @@ export class ProductAdmComponent implements OnInit {
   }
 
   delete(id:number, index:number){
-    this.deliveryService.deleteProduct(id).subscribe(res => {
+    this.productService.deleteProduct(id).subscribe(res => {
       this.products.splice(index,1);
       alert("Producto eliminado");
     },
@@ -69,6 +71,7 @@ export class ProductAdmComponent implements OnInit {
 
   changeView(value:number){
     this.view = value;
+    this.productAdd=[];
   }
 
 
