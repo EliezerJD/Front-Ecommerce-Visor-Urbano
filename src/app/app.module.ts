@@ -14,6 +14,8 @@ import { HomeComponent } from './@components/home/home.component';
 import { environment } from 'src/environments/environment';
 import { AdminComponent } from './@components/admin/admin.component';
 import { UserComponent } from './@components/user/user.component';
+import { UserAdmComponent } from './@components/user-adm/user-adm.component';
+import { ProductAdmComponent } from './@components/product-adm/product-adm.component';
 
 
 
@@ -27,6 +29,8 @@ import { UserComponent } from './@components/user/user.component';
     FooterComponent,
     AdminComponent,
     UserComponent,
+    UserAdmComponent,
+    ProductAdmComponent,
   ],
   imports: [
     BrowserModule,

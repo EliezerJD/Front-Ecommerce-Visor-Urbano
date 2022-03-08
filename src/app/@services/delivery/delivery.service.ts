@@ -7,10 +7,35 @@ const urlApi = 'http://localhost:8000';
   providedIn: 'root'
 })
 export class DeliveryService {
-
+  httpOptions;
   constructor(private http: HttpClient) { }
 
   getAllProducts(){
     return this.http.get(urlApi + '/api/productos');
+  }
+
+  getAllUsers(){
+    return this.http.get(urlApi + '/api/usuarios', this.httpOptions);
+  }
+
+  addProduct(data:any){
+    return this.http.post(urlApi + '/api/productos/register', {name:data.name, description:data.description, price:data.price, amount:data.amount, image:'image.jpg'}, this.httpOptions);
+  }
+
+  updateProduct(data:any, id:number){
+    return this.http.put(urlApi + '/api/productos/update/'+id, {name:data.name, description:data.description, price:data.price, amount:data.amount}, this.httpOptions);
+  }
+
+  deleteProduct(id:number){
+    return this.http.delete(urlApi + '/api/productos/delete/'+id, this.httpOptions);
+  }
+
+  init(token:string){
+    this.httpOptions = {
+      headers : new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer `+ token
+      })
+    };
   }
 }

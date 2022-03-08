@@ -85,7 +85,8 @@
                                     <h6 *ngIf="admin==true"class="user-utiliity-title">Administrador</h6>
                                     <hr>
                                     <ul class="text-left">
-                                        <div *ngIf="isAuth()==true else nologueado">
+                                        <div *ngIf="logued==true else nologueado">
+                                            <li><a class="user-utiliity-title">{{email}}</a></li>
                                             <li *ngIf="admin==false"><a href="/usuario">Mi cuenta</a></li> 
                                             <li *ngIf="admin==true"><a href="/admin">Administrar</a></li> 
                                             <li><a (click)="logout()">Salir</a></li> 

@@ -5,6 +5,10 @@ import { RegisterComponent } from './@components/register/register.component';
 import { HomeComponent } from './@components/home/home.component';
 import { AdminComponent } from './@components/admin/admin.component';
 import { UserComponent } from './@components/user/user.component';
+import { UserAdmComponent } from './@components/user-adm/user-adm.component';
+import { ProductAdmComponent } from './@components/product-adm/product-adm.component';
+import { LoginGuard } from './guards/login.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
 {
@@ -18,7 +22,8 @@ const routes: Routes = [
 },
 {
    path: 'login',
-   component: LoginComponent
+   component: LoginComponent,
+   canActivate: [LoginGuard]
 },
 {
    path: 'register',
@@ -26,7 +31,18 @@ const routes: Routes = [
 },
 {
    path: 'admin',
-   component: AdminComponent
+   component: AdminComponent,
+   canActivate: [AdminGuard],
+   children: [
+      {
+         path: 'product',
+         component: ProductAdmComponent
+      },
+      {
+         path: 'user',
+         component: UserAdmComponent,
+      },
+   ]
 },
 {
    path: 'user',

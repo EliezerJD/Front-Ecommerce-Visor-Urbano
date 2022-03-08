@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone} from '@angular/core';
 import { AdminService } from  'src/app/@services/admin/admin.service';
-import { DeliveryService } from  'src/app/@services/delivery/delivery.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,20 +8,9 @@ import { DeliveryService } from  'src/app/@services/delivery/delivery.service';
 })
 
 export class AdminComponent implements OnInit {
-  products:any=[];
-  constructor(private adminService: AdminService, private deliveryService: DeliveryService) { }
+  constructor(private adminService: AdminService) { }
   
   ngOnInit(): void { 
-    this.getAllProducts();
-  }
-
-  getAllProducts(){
-    this.deliveryService.getAllProducts().subscribe(res => {
-      this.products = res;
-    },
-    error=> {
-      alert(error.message);
-    });
   }
 
 
